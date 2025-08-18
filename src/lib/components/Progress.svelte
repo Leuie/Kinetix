@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import 'chartjs-adapter-date-fns';
-	import { TrendingUp, TrendingDown, Clock } from 'lucide-svelte';
+	import { TrendingUp, TrendingDown, Clock, Calendar, Filter } from 'lucide-svelte';
 	import { healthMetrics, exerciseLogs } from '$lib/stores/fitness';
 
 	let weightChart: HTMLCanvasElement;
@@ -12,14 +12,48 @@
 	let weightChartInstance: Chart | null = null;
 	let bodyFatChartInstance: Chart | null = null;
 	let calorieChartInstance: Chart | null = null;
+	
+	let timePeriod: 'week' | 'month' | 'year' = 'month';
 
 	onMount(() => {
 		createCharts();
 	});
 
 	// Reactive chart updates
-	$: if ($healthMetrics.length > 0 || $exerciseLogs.length > 0) {
+	$: if ($healthMetrics.length > 0 || $exerciseLogs.length > 0 || timePeriod) {
 		setTimeout(() => createCharts(), 100);
+	}
+	
+	function getTimeUnit() {
+		switch (timePeriod) {
+			case 'week': return 'day';
+			case 'month': return 'week';
+			case 'year': return 'month';
+			default: return 'week';
+		}
+	}
+	
+	function filterDataByPeriod(data: any[]) {
+		if (data.length === 0) return data;
+		
+		const now = new Date();
+		let cutoffDate: Date;
+		
+		switch (timePeriod) {
+			case 'week':
+				cutoffDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+				break;
+			case 'month':
+				cutoffDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+				break;
+			case 'year':
+				cutoffDate = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000);
+				break;
+			default:
+				return data;
+		}
+		
+		return data.filter(item => new Date(item.x) >= cutoffDate);
 	}
 
 	function createCharts() {
@@ -69,6 +103,9 @@
 			x: entry.date,
 			y: entry.weight
 		}));
+		
+		const filteredProjectedData = filterDataByPeriod(projectedData);
+		const filteredActualData = filterDataByPeriod(actualData);
 
 		weightChartInstance = new Chart(ctx, {
 			type: 'line',
@@ -76,7 +113,7 @@
 				datasets: [
 					{
 						label: 'Projected Weight',
-						data: projectedData,
+						data: filteredProjectedData,
 						borderColor: 'rgba(59, 130, 246, 0.5)',
 						backgroundColor: 'rgba(59, 130, 246, 0.1)',
 						borderDash: [5, 5],
@@ -84,7 +121,7 @@
 					},
 					{
 						label: 'Actual Weight',
-						data: actualData,
+						data: filteredActualData,
 						borderColor: 'rgb(34, 197, 94)',
 						backgroundColor: 'rgba(34, 197, 94, 0.1)',
 						tension: 0.1
@@ -110,7 +147,7 @@
 					x: {
 						type: 'time',
 						time: {
-							unit: 'week'
+							unit: getTimeUnit()
 						},
 						ticks: {
 							color: 'rgba(255, 255, 255, 0.6)'
@@ -140,6 +177,8 @@
 			x: entry.date,
 			y: entry.bodyFat
 		}));
+		
+		const filteredBodyFatData = filterDataByPeriod(bodyFatData);
 
 		// Target zones for 37-year-old male
 		const zones = [
@@ -156,7 +195,7 @@
 				datasets: [
 					{
 						label: 'Body Fat %',
-						data: bodyFatData,
+						data: filteredBodyFatData,
 						borderColor: 'rgb(168, 85, 247)',
 						backgroundColor: 'rgba(168, 85, 247, 0.1)',
 						tension: 0.1
@@ -182,7 +221,7 @@
 					x: {
 						type: 'time',
 						time: {
-							unit: 'week'
+							unit: getTimeUnit()
 						},
 						ticks: {
 							color: 'rgba(255, 255, 255, 0.6)'
@@ -221,6 +260,8 @@
 			x: date,
 			y: calories
 		})).sort((a, b) => a.x.localeCompare(b.x));
+		
+		const filteredCalorieData = filterDataByPeriod(calorieData);
 
 		calorieChartInstance = new Chart(ctx, {
 			type: 'bar',
@@ -228,7 +269,7 @@
 				datasets: [
 					{
 						label: 'Daily Calories Burned',
-						data: calorieData,
+						data: filteredCalorieData,
 						backgroundColor: 'rgba(34, 197, 94, 0.6)',
 						borderColor: 'rgb(34, 197, 94)',
 						borderWidth: 1
@@ -254,7 +295,7 @@
 					x: {
 						type: 'time',
 						time: {
-							unit: 'day'
+							unit: getTimeUnit()
 						},
 						ticks: {
 							color: 'rgba(255, 255, 255, 0.6)'
@@ -299,6 +340,44 @@
 		<h1 class="text-3xl font-bold">Progress Tracking</h1>
 		<p class="text-base-content/70">Visualize your transformation journey</p>
 	</div>
+	
+	<!-- Time Period Filter -->
+	<div class="card bg-base-200">
+		<div class="card-body p-4">
+			<div class="flex items-center gap-4">
+				<div class="flex items-center gap-2">
+					<Filter size={16} />
+					<span class="font-medium">Time Period:</span>
+				</div>
+				<div class="join">
+					<button 
+						class="btn join-item btn-sm {timePeriod === 'week' ? 'btn-active' : 'btn-outline'}"
+						on:click={() => timePeriod = 'week'}
+					>
+						<Calendar size={14} />
+						Week
+					</button>
+					<button 
+						class="btn join-item btn-sm {timePeriod === 'month' ? 'btn-active' : 'btn-outline'}"
+						on:click={() => timePeriod = 'month'}
+					>
+						<Calendar size={14} />
+						Month
+					</button>
+					<button 
+						class="btn join-item btn-sm {timePeriod === 'year' ? 'btn-active' : 'btn-outline'}"
+						on:click={() => timePeriod = 'year'}
+					>
+						<Calendar size={14} />
+						Year
+					</button>
+				</div>
+				<div class="text-sm text-base-content/60">
+					Showing data for the last {timePeriod === 'week' ? '7 days' : timePeriod === 'month' ? '30 days' : '365 days'}
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Calorie Deficit Summary -->
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -331,7 +410,7 @@
 	<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 		<div class="card bg-base-200">
 			<div class="card-body">
-				<h3 class="card-title text-sm mb-2">Weight Progress</h3>
+				<h3 class="card-title text-sm mb-2">Weight Progress ({timePeriod})</h3>
 				<div class="h-80">
 					<canvas bind:this={weightChart}></canvas>
 				</div>
@@ -340,7 +419,7 @@
 		
 		<div class="card bg-base-200">
 			<div class="card-body">
-				<h3 class="card-title text-sm mb-2">Body Fat Progress</h3>
+				<h3 class="card-title text-sm mb-2">Body Fat Progress ({timePeriod})</h3>
 				<div class="h-80">
 					<canvas bind:this={bodyFatChart}></canvas>
 				</div>
@@ -349,7 +428,7 @@
 		
 		<div class="card bg-base-200">
 			<div class="card-body">
-				<h3 class="card-title text-sm mb-2">Daily Calorie Burn</h3>
+				<h3 class="card-title text-sm mb-2">Daily Calorie Burn ({timePeriod})</h3>
 				<div class="h-80">
 					<canvas bind:this={calorieChart}></canvas>
 				</div>
