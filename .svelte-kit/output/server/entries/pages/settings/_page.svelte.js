@@ -7,8 +7,8 @@ function Settings($$payload, $$props) {
   push();
   var $$store_subs;
   let daysSinceStart, daysUntilGoal;
-  daysSinceStart = Math.floor((/* @__PURE__ */ (/* @__PURE__ */ new Date()).getTime() - new Date(store_get($$store_subs ??= {}, "$userSettings", userSettings).start_date).getTime()) / (1e3 * 60 * 60 * 24));
-  daysUntilGoal = Math.floor((/* @__PURE__ */ (/* @__PURE__ */ new Date("2026-01-01")).getTime() - /* @__PURE__ */ (/* @__PURE__ */ new Date()).getTime()) / (1e3 * 60 * 60 * 24));
+  daysSinceStart = Math.floor(((/* @__PURE__ */ new Date()).getTime() - new Date(store_get($$store_subs ??= {}, "$userSettings", userSettings).start_date).getTime()) / (1e3 * 60 * 60 * 24));
+  daysUntilGoal = Math.floor(((/* @__PURE__ */ new Date("2026-01-01")).getTime() - (/* @__PURE__ */ new Date()).getTime()) / (1e3 * 60 * 60 * 24));
   $$payload.out.push(`<div class="space-y-6"><div><h1 class="text-3xl font-bold">Settings</h1> <p class="text-base-content/70">Customize your transformation tracker</p></div> <div class="card bg-base-200"><div class="card-body"><h2 class="card-title mb-4">Personal Information</h2> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="form-control"><label class="label"><span class="label-text">Current Age</span></label> <input type="number" class="input input-bordered"${attr("value", store_get($$store_subs ??= {}, "$userSettings", userSettings).current_age)} readonly/> <label class="label"><span class="label-text-alt">Fixed for fitness standards calculation</span></label></div> <div class="form-control"><label class="label"><span class="label-text">Start Date (37th Birthday)</span></label> <input type="date" class="input input-bordered"${attr("value", store_get($$store_subs ??= {}, "$userSettings", userSettings).start_date)}/> <label class="label"><span class="label-text-alt">`);
   if (daysSinceStart < 0) {
     $$payload.out.push("<!--[-->");
