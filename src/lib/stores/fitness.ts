@@ -75,7 +75,7 @@ export const loadHealthMetrics = async (userId: string) => {
 export const saveHealthMetrics = async (userId: string, metrics: HealthMetrics) => {
 	const { error } = await supabase
 		.from('health_metrics')
-		.insert({
+		.upsert({
 			user_id: userId,
 			weight: metrics.weight,
 			bmi: metrics.bmi,
@@ -91,6 +91,8 @@ export const saveHealthMetrics = async (userId: string, metrics: HealthMetrics) 
 			bmr: metrics.bmr,
 			metabolic_age: metrics.metabolicAge,
 			recorded_date: metrics.date
+		}, {
+			onConflict: 'user_id, recorded_date'
 		});
 
 	if (error) {
