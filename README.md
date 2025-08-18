@@ -7,9 +7,9 @@
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 [![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-> **Transform your body with military-grade precision**
+> **Transform your body with analytical precision**
 
-A comprehensive fitness tracking application designed specifically for achieving military-grade physical standards. Track your journey from day one to peak performance with precision metrics, structured training plans, and a rewarding 50-achievement system.
+A comprehensive fitness tracking application designed specifically for transforming your physical standards. Track your journey from day one to peak performance with precision metrics, structured training plans, and a rewarding 50-achievement system.
 
 ## ✨ Features
 
@@ -35,11 +35,11 @@ A comprehensive fitness tracking application designed specifically for achieving
 ### 📊 **Smart Analytics & Insights**
 - **Calorie Deficit Tracking**: Weekly and monthly projections based on your exercise plan
 - **Streak Monitoring**: Track consecutive workout days with badge rewards
-- **Body Composition Analysis**: Color-coded metrics with status indicators (Excellent, Good, Fair, Poor)
+- **Body Composition Analysis**: Color coded metrics with status indicators (Excellent, Good, Fair, Poor)
 - **Goal Projections**: Visual timeline showing projected achievement of target weight
 
 ### 🎨 **Modern User Experience**
-- **Dark Theme**: Eye-friendly interface optimized for daily use
+- **Dark Theme**: Eye friendly interface optimized for daily use
 - **Responsive Design**: Perfect experience on mobile, tablet, and desktop
 - **Intuitive Navigation**: Clean sidebar navigation with quick stats
 - **Daily Motivation**: Curated motivational quotes with category-based rotation
@@ -91,9 +91,9 @@ A comprehensive fitness tracking application designed specifically for achieving
 
 ### **Frontend**
 - **[Svelte 5](https://svelte.dev/)** - Reactive UI framework with runes
-- **[SvelteKit](https://kit.svelte.dev/)** - Full-stack framework with SSR/SSG
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[SvelteKit](https://kit.svelte.dev/)** - Full stack framework with SSR/SSG
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safe development
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility first CSS framework
 - **[DaisyUI](https://daisyui.com/)** - Tailwind CSS component library
 - **[Lucide Svelte](https://lucide.dev/)** - Beautiful SVG icons
 
@@ -245,7 +245,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Miguel Viddy**
 
-This is my first application of many, built with the mission to improve and better some part of my life through technology. Every tool I create serves a meaningful purpose in bettering our daily existence.
+This is my first application of many, built with the mission to improve and better some part of my life through technology. Every tool I create serves a meaningful purpose in bettering my daily existence. If it works for me I'm sure it will(can) work for you as well.
 
 - 🎯 **Mission**: Create technology that genuinely improves lives
 - 💪 **Focus**: Health, fitness, and personal transformation
@@ -262,7 +262,7 @@ This is my first application of many, built with the mission to improve and bett
 
 <div align="center">
 
-**Transform your body with military precision** 💪
+**Transform your body with analytical precision** 💪
 
 [Get Started](https://your-app-url.com) • [View Achievements](https://your-app-url.com/achievements) • [Learn More](https://your-app-url.com/about)
 
