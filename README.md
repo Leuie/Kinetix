@@ -264,6 +264,6 @@ This is my first application of many, built with the mission to improve and bett
 
 **Transform your body with analytical precision** 💪
 
-[Get Started](https://your-app-url.com) • [View Achievements](https://your-app-url.com/achievements) • [Learn More](https://your-app-url.com/about)
+[Get Started](https://projectglowup.app) • [View Achievements](https://projectglowup.app/achievements) • [Learn More](https://projectglowup.app/about)
 
 </div>
