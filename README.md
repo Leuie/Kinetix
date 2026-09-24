@@ -1,4 +1,4 @@
-# 💪 Project Glow Up
+# ⚡ Kinetix Performance OS
 
 [![Svelte](https://img.shields.io/badge/Svelte-5.0-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://svelte.dev/)
 [![SvelteKit](https://img.shields.io/badge/SvelteKit-2.0-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://kit.svelte.dev/)
@@ -7,15 +7,16 @@
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 [![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-> **Transform your body with analytical precision**
+> **The Kinetic Monolith: High-Performance Athletic Conditioning, Fasting & Nutrition OS**
 
-A comprehensive fitness tracking application designed specifically for transforming your physical standards. Track your journey from day one to peak performance with precision metrics, structured training plans, and a rewarding 50-achievement system.
+A comprehensive, sovereign performance operating system designed for serious physical transformation. Unites intermittent fasting, whole-food nutrition, low-impact joint longevity, and elite bodyweight calisthenics into an authoritative, dark-mode digital coach.
 
 ## ✨ Features
 
-### 🎯 **Comprehensive Health Tracking**
+### 🎯 **Comprehensive Health & Metabolic Tracking**
 - **13+ Health Metrics**: Weight, BMI, body fat %, visceral fat, muscle mass, bone mass, protein %, BMR, metabolic age, and more
-- **Military Standards**: All metrics calibrated to military fitness standards for optimal health benchmarks
+- **Athletic Conditioning Standards**: Calibrated to high-performance functional movement benchmarks
+- **Fasting & Electrolyte Clock**: Native countdown timers for 16:8 and 20:4 intermittent fasting cycles with electrolyte prep checklists
 - **Real-time Analytics**: Interactive charts showing weight trends, calorie burn patterns, and body composition changes
 - **Progress Visualization**: Track your transformation with beautiful charts and goal projections
 
