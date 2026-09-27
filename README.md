@@ -11,6 +11,8 @@
 
 A comprehensive, sovereign performance operating system designed for serious physical transformation. Unites intermittent fasting, whole-food nutrition, low-impact joint longevity, and elite bodyweight calisthenics into an authoritative, dark-mode digital coach.
 
+Formerly called projectglowup.app
+
 ## ✨ Features
 
 ### 🎯 **Comprehensive Health & Metabolic Tracking**
