@@ -3,7 +3,7 @@
 	import { Check, Clock, Footprints, Dumbbell, Plus, Calendar, List, LayoutGrid, ChevronLeft, ChevronRight } from 'lucide-svelte';
 	import { exerciseLogs, saveExerciseLog, deleteExerciseLog } from '$lib/stores/fitness';
 	import { user } from '$lib/stores/auth';
-	import type { ProgressiveStrengthPlan } from '$lib/types';
+	import type { ProgressiveStrengthPlan, ExerciseLog } from '$lib/types';
 
 	let currentWeek: Date[] = [];
 	let showExerciseModal = false;

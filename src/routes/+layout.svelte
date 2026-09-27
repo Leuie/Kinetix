@@ -19,7 +19,7 @@
 
 	// Public pages that don't require authentication
 	$: isPublicPage = ['/auth'].includes($page.url.pathname);
-	$: isPublicContentPage = ['/about', '/achievements'].includes($page.url.pathname);
+	$: isPublicContentPage = ['/', '/about', '/achievements'].includes($page.url.pathname);
 </script>
 
 {#if $loading}
@@ -53,7 +53,7 @@
 				</div>
 				<div class="flex-1 flex items-center gap-3">
 					<div class="w-8 h-8 flex items-center justify-center text-2xl">💪</div>
-					<h1 class="text-xl font-bold">Project Glow Up</h1>
+					<h1 class="text-xl font-bold">Kinetix OS</h1>
 				</div>
 				<!-- Dock toggle button - only show on larger screens -->
 				<div class="flex-none hidden lg:block">

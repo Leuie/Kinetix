@@ -1,106 +1,102 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/auth';
-	import { TrendingUp, Target, Award, Calendar, Shield, Zap, Trophy, Star, Crown, Diamond, User, Heart, Code, Sparkles, ArrowRight, CircleCheck as CheckCircle, Play, Medal } from 'lucide-svelte';
+	import { TrendingUp, Target, Award, Calendar, Shield, Zap, Trophy, Star, Crown, Diamond, User, Heart, Code, Sparkles, ArrowRight, CircleCheck as CheckCircle, Play, Medal, Activity } from 'lucide-svelte';
 	import DailyQuote from '$lib/components/DailyQuote.svelte';
 	import Dashboard from '$lib/components/Dashboard.svelte';
+	import GuidedStretchingPlayer from '$lib/components/GuidedStretchingPlayer.svelte';
 
 	let showFeatures = false;
 
 	onMount(() => {
-		// Animate features in after a delay
 		setTimeout(() => {
 			showFeatures = true;
 		}, 800);
 	});
 </script>
 
-{#if $user}
-	<!-- Show dashboard for logged in users -->
-	<Dashboard />
-{:else}
-	<!-- Home page for non-logged in users -->
-	<div class="min-h-screen">
-		<!-- Hero Section -->
-		<section class="hero min-h-screen bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20">
-			<div class="hero-content text-center max-w-6xl">
-				<div class="max-w-4xl">
-					<!-- Logo/Icon -->
-					<div class="flex justify-center mb-8">
-						<div class="w-32 h-32 flex items-center justify-center text-8xl animate-pulse">💪</div>
+<div class="space-y-8 p-4 md:p-6 max-w-7xl mx-auto">
+	<!-- Guided Stretching & Joint Mobility Player -->
+	<GuidedStretchingPlayer />
+
+	{#if $user}
+		<!-- Show dashboard for logged in users -->
+		<Dashboard />
+	{:else}
+		<!-- Home page overview -->
+		<div class="space-y-8">
+			<section class="rounded-2xl bg-gradient-to-br from-[#0c101d] via-[#101526] to-[#070a13] p-8 border border-[#20273c] text-center shadow-xl">
+				<div class="max-w-3xl mx-auto space-y-4 mb-10">
+					<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-semibold uppercase">
+						<Activity size={14} />
+						Autonomous Performance Operating System
 					</div>
-					
-					<!-- Main Heading -->
-					<h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-						Project Glow Up
+					<h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+						KINETIX OS
 					</h1>
-					
-					<!-- Subtitle -->
-					<p class="text-xl md:text-2xl mb-8 text-base-content/80 max-w-3xl mx-auto leading-relaxed">
-						Transform your body with military-grade precision. Track 13+ health metrics, follow structured training plans, 
-						and unlock 50 unique achievements on your journey to peak fitness.
+					<p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+						Consolidated physical conditioning engine. Combining Dr Suzanne Martin guided stretching cadences, deep squat VMO glide knee rehabilitation, and sanitized functional bodyweight progressions with zero military terminology.
 					</p>
+				</div>
 					
-					<!-- Key Stats -->
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-2xl mx-auto">
-						<div class="stat bg-base-200/50 rounded-lg backdrop-blur-sm">
-							<div class="stat-figure text-primary">
-								<Trophy size={32} />
-							</div>
-							<div class="stat-title">Achievements</div>
-							<div class="stat-value text-primary">50</div>
-							<div class="stat-desc">Unique rewards to unlock</div>
+				<!-- Key Stats -->
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-2xl mx-auto">
+					<div class="stat bg-base-200/50 rounded-lg backdrop-blur-sm">
+						<div class="stat-figure text-primary">
+							<Trophy size={32} />
 						</div>
-						
-						<div class="stat bg-base-200/50 rounded-lg backdrop-blur-sm">
-							<div class="stat-figure text-secondary">
-								<TrendingUp size={32} />
-							</div>
-							<div class="stat-title">Health Metrics</div>
-							<div class="stat-value text-secondary">13+</div>
-							<div class="stat-desc">Comprehensive tracking</div>
-						</div>
-						
-						<div class="stat bg-base-200/50 rounded-lg backdrop-blur-sm">
-							<div class="stat-figure text-accent">
-								<Target size={32} />
-							</div>
-							<div class="stat-title">Training Plan</div>
-							<div class="stat-value text-accent">20</div>
-							<div class="stat-desc">Week transformation</div>
-						</div>
+						<div class="stat-title">Achievements</div>
+						<div class="stat-value text-primary">50</div>
+						<div class="stat-desc">Unique rewards to unlock</div>
 					</div>
 					
-					<!-- CTA Buttons -->
-					<div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-						<a href="/auth" class="btn btn-primary btn-lg">
-							<Play size={20} />
-							Start Your Transformation
-							<ArrowRight size={20} />
-						</a>
-						<a href="/about" class="btn btn-outline btn-lg">
-							<Trophy size={20} />
-							Learn More
-						</a>
+					<div class="stat bg-base-200/50 rounded-lg backdrop-blur-sm">
+						<div class="stat-figure text-secondary">
+							<TrendingUp size={32} />
+						</div>
+						<div class="stat-title">Health Metrics</div>
+						<div class="stat-value text-secondary">13+</div>
+						<div class="stat-desc">Comprehensive tracking</div>
 					</div>
 					
-					<!-- Creator Badge -->
-					<div class="inline-flex items-center gap-2 px-4 py-2 bg-base-200/50 rounded-full backdrop-blur-sm">
-						<Code size={16} class="text-accent" />
-						<span class="text-sm">Created by <strong class="text-primary">Miguel Viddy</strong> • First of Many</span>
-						<Sparkles size={16} class="text-accent" />
+					<div class="stat bg-base-200/50 rounded-lg backdrop-blur-sm">
+						<div class="stat-figure text-accent">
+							<Target size={32} />
+						</div>
+						<div class="stat-title">Training Plan</div>
+						<div class="stat-value text-accent">20</div>
+						<div class="stat-desc">Week transformation</div>
 					</div>
 				</div>
-			</div>
-		</section>
+				
+				<!-- CTA Buttons -->
+				<div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+					<a href="/auth" class="btn btn-primary btn-lg">
+						<Play size={20} />
+						Start Your Transformation
+						<ArrowRight size={20} />
+					</a>
+					<a href="/about" class="btn btn-outline btn-lg">
+						<Trophy size={20} />
+						Learn More
+					</a>
+				</div>
+				
+				<!-- Creator Badge -->
+				<div class="inline-flex items-center gap-2 px-4 py-2 bg-base-200/50 rounded-full backdrop-blur-sm">
+					<Code size={16} class="text-accent" />
+					<span class="text-sm">Created by <strong class="text-primary">Miguel Viddy</strong> • First of Many</span>
+					<Sparkles size={16} class="text-accent" />
+				</div>
+			</section>
 
 		<!-- Features Section -->
 		<section class="py-20 bg-base-100">
 			<div class="container mx-auto px-4">
 				<div class="text-center mb-16">
-					<h2 class="text-4xl font-bold mb-4">Why Choose Project Glow Up?</h2>
+					<h2 class="text-4xl font-bold mb-4">Why Choose Kinetix OS?</h2>
 					<p class="text-xl text-base-content/70 max-w-2xl mx-auto">
-						Built with military precision and gamification elements to keep you motivated throughout your transformation journey.
+						Built with anatomical precision and gamification mechanics to keep you motivated throughout your physical longevity journey.
 					</p>
 				</div>
 				
@@ -115,7 +111,7 @@
 							</div>
 							<h3 class="card-title justify-center mb-2">Comprehensive Tracking</h3>
 							<p class="text-base-content/70">
-								Monitor 13+ health metrics including BMI, body fat, muscle mass, visceral fat, and metabolic age with military-grade precision.
+								Monitor 13+ health metrics including BMI, body fat, muscle mass, visceral fat, and metabolic age with laboratory grade precision.
 							</p>
 						</div>
 					</div>
@@ -130,7 +126,7 @@
 							</div>
 							<h3 class="card-title justify-center mb-2">Structured Training</h3>
 							<p class="text-base-content/70">
-								Follow a progressive 20-week training plan with walking schedules and strength training designed for optimal results.
+								Follow a progressive 20 week training plan with walking schedules and strength training designed for optimal results.
 							</p>
 						</div>
 					</div>
@@ -145,7 +141,7 @@
 							</div>
 							<h3 class="card-title justify-center mb-2">50 Achievements</h3>
 							<p class="text-base-content/70">
-								Unlock rewards across 5 tiers and 4 rarity levels. From "First Blood" to "Ultimate Warrior" - every milestone matters.
+								Unlock rewards across 5 tiers and 4 rarity levels. From Novice to Grandmaster, every milestone accelerates your physical sovereignty.
 							</p>
 						</div>
 					</div>
@@ -158,9 +154,9 @@
 									<Shield size={32} class="text-success" />
 								</div>
 							</div>
-							<h3 class="card-title justify-center mb-2">Military Standards</h3>
+							<h3 class="card-title justify-center mb-2">Functional Benchmarks</h3>
 							<p class="text-base-content/70">
-								All metrics calibrated to military fitness standards for 37-year-old males, ensuring scientifically-backed goals.
+								All metrics calibrated to functional calisthenics benchmarks for peak adult performance, ensuring scientifically validated longevity.
 							</p>
 						</div>
 					</div>
@@ -173,7 +169,7 @@
 									<Zap size={32} class="text-warning" />
 								</div>
 							</div>
-							<h3 class="card-title justify-center mb-2">Real-time Analytics</h3>
+							<h3 class="card-title justify-center mb-2">Real Time Analytics</h3>
 							<p class="text-base-content/70">
 								Interactive charts showing weight trends, calorie burn patterns, and body composition changes with goal projections.
 							</p>
@@ -271,7 +267,7 @@
 				<div class="max-w-3xl mx-auto">
 					<h2 class="text-4xl font-bold mb-6">Ready to Transform Your Life?</h2>
 					<p class="text-xl mb-8 text-base-content/80">
-						Join the journey to military-grade fitness with comprehensive tracking, structured training, and rewarding achievements.
+						Join the journey to sovereign physical mastery with comprehensive tracking, structured training, and rewarding achievements.
 					</p>
 					
 					<div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -296,7 +292,7 @@
 						</div>
 						<div class="flex items-center gap-2">
 							<CheckCircle size={16} class="text-success" />
-							<span>Military-grade standards</span>
+							<span>Sovereign athletic standards</span>
 						</div>
 						<div class="flex items-center gap-2">
 							<CheckCircle size={16} class="text-success" />
@@ -311,8 +307,8 @@
 		<footer class="footer footer-center p-10 bg-base-200 text-base-content">
 			<div>
 				<div class="w-12 h-12 flex items-center justify-center text-3xl mb-4">💪</div>
-				<p class="font-bold text-lg">Project Glow Up</p>
-				<p class="text-base-content/70">Transform your body with military precision</p>
+				<p class="font-bold text-lg">Kinetix OS</p>
+				<p class="text-base-content/70">Transform your body with anatomical precision</p>
 			</div>
 			<div>
 				<div class="grid grid-flow-col gap-4">
@@ -333,6 +329,7 @@
 		</footer>
 	</div>
 {/if}
+</div>
 
 <style>
 	@keyframes fade-in {

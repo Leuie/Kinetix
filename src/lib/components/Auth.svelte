@@ -47,7 +47,7 @@
 				<div class="flex justify-center mb-4">
 					<div class="w-20 h-20 flex items-center justify-center text-5xl">💪</div>
 				</div>
-				<h1 class="text-2xl font-bold">Project Glow Up: A Fitness Tracker</h1>
+				<h1 class="text-2xl font-bold">Kinetix OS</h1>
 				<p class="text-base-content/70">
 					{isSignUp ? 'Create your account' : 'Sign in to your account'}
 				</p>
@@ -55,8 +55,8 @@
 
 			<form on:submit|preventDefault={handleAuth} class="space-y-4">
 				<div class="form-control">
-					<label class="label">
-						<span class="label-text" for="email">Email</span>
+					<label class="label" for="email">
+						<span class="label-text">Email</span>
 					</label>
 					<div class="relative">
 						<input
@@ -72,8 +72,8 @@
 				</div>
 
 				<div class="form-control">
-					<label class="label">
-						<span class="label-text" for="password">Password</span>
+					<label class="label" for="password">
+						<span class="label-text">Password</span>
 					</label>
 					<div class="relative">
 						<input

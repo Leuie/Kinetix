@@ -151,14 +151,16 @@
 
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 		{#each metrics as metric (metric.key)}
+			{@const currentVal = Number($currentMetrics?.[metric.key] ?? 0)}
+			{@const baseVal = $baselineMetrics?.[metric.key] !== undefined ? Number($baselineMetrics[metric.key]) : null}
 			<MetricCard
 				label={metric.label}
-				value={$currentMetrics?.[metric.key] || 0}
+				value={currentVal}
 				unit={metric.unit}
-				color={getMetricColor(metric.key, $currentMetrics?.[metric.key] || 0)}
-				status={getMetricStatus(metric.key, $currentMetrics?.[metric.key] || 0)}
-				trend={getTrend($currentMetrics?.[metric.key] || 0, $baselineMetrics?.[metric.key] || null)}
-				trendIcon={getTrendIcon(getTrend($currentMetrics?.[metric.key] || 0, $baselineMetrics?.[metric.key] || null))}
+				color={getMetricColor(metric.key, currentVal)}
+				status={getMetricStatus(metric.key, currentVal)}
+				trend={getTrend(currentVal, baseVal)}
+				trendIcon={getTrendIcon(getTrend(currentVal, baseVal))}
 				positive={metric.positive}
 			/>
 		{/each}
@@ -176,8 +178,8 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-96 overflow-y-auto">
 			{#each metrics as metric (metric.key)}
 				<div class="form-control">
-					<label class="label">
-						<span class="label-text" for="{metric.key}">{metric.label} {metric.unit ? `(${metric.unit})` : ''}</span>
+					<label class="label" for="{metric.key}">
+						<span class="label-text">{metric.label} {metric.unit ? `(${metric.unit})` : ''}</span>
 					</label>
 					<input 
 						type="number" 

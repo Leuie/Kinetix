@@ -35,8 +35,8 @@
 		<div class="flex justify-center mb-4">
 			<div class="w-16 h-16 flex items-center justify-center text-4xl">💪</div>
 		</div>
-		<h1 class="text-2xl font-bold text-primary">Project Glow Up</h1>
-		<p class="text-sm text-base-content/70">Your Transformation Journey</p>
+		<h1 class="text-2xl font-bold text-primary tracking-wide">Kinetix OS</h1>
+		<p class="text-sm text-base-content/70">Human Performance Engine</p>
 	</div>
 	
 	<ul class="menu p-4 space-y-2">
